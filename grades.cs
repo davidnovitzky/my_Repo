@@ -16,7 +16,7 @@ for (int i = 0; i < grades.Length; i++)
     if (grades[i] < currentSmallest) currentSmallest = grades[i];
     if (grades[i] > currentLargest)  currentLargest = grades[i];
 
-    total = total + grades[i];
+    total += grades[i];
 }
 Console.WriteLine();
 
