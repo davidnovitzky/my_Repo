@@ -14,7 +14,7 @@ for (int i = 0; i < grades.Length; i++)
     grades[i] = int.Parse(Console.ReadLine());
 
     if (grades[i] < currentSmallest) currentSmallest = grades[i];
-    if (grades[i] > currentLargest)  currentLargest = grades[i];
+    if (grades[i] > currentLargest) currentLargest = grades[i];
 
     total += grades[i];
 }
@@ -23,12 +23,15 @@ Console.WriteLine();
 for (int i = 0; i < grades.Length; i++)
 {
     int score = grades[i];
-    
-    if (score >= 90 && score <= 100)     feedback = "Excellent!";
-    else if (score >= 70 && score <= 89) feedback = "Good Job!";
-    else if (score >= 50 && score <= 69) feedback = "You passed!";
-    else if (score >= 0 && score <= 49)  feedback = "You failed";
-    else                                 feedback = "Invalid Score";
+
+    feedback = score switch // the feedback value is assigned based on score using switches
+    {
+        >= 90 and <= 100 => "Excellent!", // if score >= 90 and <= 100 feedback is assigned
+        >= 70 and <= 89 => "Good Job!",
+        >= 50 and <= 69 => "You passed!",
+        >= 0 and <= 49 => "You failed",
+        _ => "Invalid Score"
+    };
 
     Console.Write($"Student {i + 1} score : {score} - {feedback}");
     Console.ReadLine();
@@ -38,7 +41,7 @@ Console.WriteLine();
 float average = total / studentCount;
 
 if (average == Math.Floor(average)) Console.WriteLine($"Average grade: {average:F0}");
-else                                Console.WriteLine($"Average grade: {average:F1}");
+else Console.WriteLine($"Average grade: {average:F1}");
 
 Console.WriteLine($"Highest grade: {currentLargest}");
 Console.WriteLine($"Lowest grade: {currentSmallest}");
