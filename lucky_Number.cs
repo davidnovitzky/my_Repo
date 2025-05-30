@@ -1,3 +1,5 @@
+using static System.Net.Mime.MediaTypeNames;
+
 DateTime today = DateTime.Now;
 
 Console.ForegroundColor = ConsoleColor.White;
@@ -35,35 +37,38 @@ while (myLastName == "")
     Console.Write("Type in your last name: ");
     myLastName = Console.ReadLine();
 }
-
-Dashes();
-Console.ForegroundColor = ConsoleColor.Cyan;
-Console.WriteLine("What is your age?");
-Console.ResetColor();
-Console.Write("Type your age: ");
-
-string myAge = Console.ReadLine();
+string myAge;
 int age;
-int.TryParse(myAge, out age); // <- Converts string to integer
 
-if (!int.TryParse(myAge, out age))
+do
 {
-    if (age >= 18)
-    {
-        Dashes();
-        Console.Write("You are old enough.");
-        Console.Write(" Please press Enter");
-        Console.ReadLine();
-    }
+    Dashes();
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine("What is your age?");
+    Console.ResetColor();
+    Console.Write("Type your age: ");
 
-    else
-    {
-        Dashes();
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Sorry, you must be at least 18. Try again later.");
-        Console.ReadLine();
-        return;
-    }
+    myAge = Console.ReadLine();
+    int.TryParse(myAge, out age); // <- Converts string to integer
+
+} while (int.TryParse(myAge, out age) == false) ;
+
+
+if (age >= 18)
+{
+    Dashes();
+    Console.Write("You are old enough.");
+    Console.Write(" Please press Enter");
+    Console.ReadLine();
+}
+
+else
+{
+    Dashes();
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Sorry, you must be at least 18. Try again later.");
+    Console.ReadLine();
+    return;
 }
 
 Dashes();
