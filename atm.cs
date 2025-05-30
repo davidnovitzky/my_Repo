@@ -119,6 +119,7 @@ if (repeat.ToLower() == "no")
  * Check balance
  * Deposit
  * Withdraw
+ * Change PIN
  * Exit
  * ---------------
  * Check balance
