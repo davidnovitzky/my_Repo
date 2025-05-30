@@ -108,3 +108,35 @@ if (repeat.ToLower() == "no")
     Console.ReadLine();
     return;
 }
+
+/* ATM
+ * Login system
+ * 4 digit Pin
+ * 3 attempts
+ * If fail exit app
+ * MAIN MENU
+ * Check balance
+ * Deposit
+ * Withdraw
+ * Exit
+ * ---------------
+ * Check balance
+ * Show Balance
+ * Back
+ * Exit
+ * --------------
+ * Deposit
+ * How much?
+ * Add to balance
+ * Show balance?
+ * Back
+ * Exit
+ * --------------
+ * Withdraw
+ * How much?
+ * Check if enough balance
+ * Subtract from balance
+ * Show balance?
+ * back 
+ * Exit
+ * */
