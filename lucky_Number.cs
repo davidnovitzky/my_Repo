@@ -43,24 +43,27 @@ Console.ResetColor();
 Console.Write("Type your age: ");
 
 string myAge = Console.ReadLine();
+int age;
+int.TryParse(myAge, out age); // <- Converts string to integer
 
-int age = int.Parse(myAge); // <- Converts string to integer
-
-if (age >= 18)
+if (!int.TryParse(myAge, out age))
 {
-    Dashes();
-    Console.Write("You are old enough.");
-    Console.Write(" Please press Enter");
-    Console.ReadLine();
-}
+    if (age >= 18)
+    {
+        Dashes();
+        Console.Write("You are old enough.");
+        Console.Write(" Please press Enter");
+        Console.ReadLine();
+    }
 
-else
-{
-    Dashes();
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Sorry, you must be at least 18. Try again later.");
-    Console.ReadLine();
-    return;
+    else
+    {
+        Dashes();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Sorry, you must be at least 18. Try again later.");
+        Console.ReadLine();
+        return;
+    }
 }
 
 Dashes();
@@ -169,7 +172,7 @@ void PlayGame()
         gameAnswer = Console.ReadLine();
     }
     // recursion "inception" (recursive method)
-    if (gameAnswer.ToLower() != "no") // <- != operator means not equal to 'no'
+    if (gameAnswer.ToLower() != "no")
     {
         Dashes();
         Console.ForegroundColor = ConsoleColor.Red;
