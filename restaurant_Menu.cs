@@ -1,15 +1,15 @@
 Console.WriteLine("Welcome to Console Cafe!");
 Console.Write("Press Enter to continue...");
 Console.ReadLine();
-
 Console.WriteLine("");
-Console.Write("What is your name? > ");
-string myName = Console.ReadLine();
-while (myName == "")
+
+string myName;
+
+do
 {
     Console.Write("What is your name? > ");
     myName = Console.ReadLine();
-}
+} while (myName == "");
 
 const int burgerPrice = 5;
 const int pizzaPrice = 7;
@@ -30,11 +30,16 @@ Console.WriteLine($"2. Pizza  - ${pizzaPrice}");
 Console.WriteLine($"3. Salad  - ${saladPrice}");
 Console.WriteLine($"4. Soda   - ${sodaPrice}");
 
+string menuAnswer;
+int menuItem;
+
 while (response.ToLower() == "yes")
 {
     Console.WriteLine("");
     Console.Write("Please enter the number of item you want to order: > ");
-    int menuItem = int.Parse(Console.ReadLine()); // <- crashes if blank or text input
+    menuAnswer = Console.ReadLine();
+    int.TryParse(menuAnswer, out menuItem); // <- crashes if blank or text input
+    
 
     if (menuItem < 1 || menuItem > 4)
     {
@@ -45,32 +50,49 @@ while (response.ToLower() == "yes")
         continue; // <- starts the loop again, without it code below executes
     }
 
-    Console.Write("How many would you like? > ");
-    int quantity = int.Parse(Console.ReadLine()); // <- crashes if blank or text input
+    
+    string answerQty = "";
+    int quantity;
+
+   while (!int.TryParse(answerQty, out quantity))
+   {
+        Console.WriteLine("");
+        Console.Write("How many would you like? > ");
+        answerQty = Console.ReadLine();
+        int.TryParse(answerQty, out quantity); // <- crashes if blank or text input
+
+        if (!int.TryParse(answerQty, out quantity))
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Invalid quantity number. Please try again.");
+            Console.ResetColor();
+            Console.ReadLine();
+            continue; // <- starts the loop again, without it code below executes
+        }
+    }
 
     if (menuItem == 1)
     {
-        burgerQty = burgerQty + quantity;
+        burgerQty += quantity;
     }
     else if (menuItem == 2)
     {
-        pizzaQty = pizzaQty + quantity;
+        pizzaQty += quantity;
     }
     else if (menuItem == 3)
     {
-        saladQty = saladQty + quantity;
+        saladQty += quantity;
     }
     else if (menuItem == 4)
     {
-        sodaQty = sodaQty + quantity;
+        sodaQty += quantity;
     }
 
     do
     {
         Console.Write("Would you like to order another item? (yes/no) > ");
         response = Console.ReadLine();
-    }
-    while (response.ToLower() != "yes" && response.ToLower() != "no");
+    } while (response.ToLower() != "yes" && response.ToLower() != "no");
 }
 
 Console.WriteLine("");
