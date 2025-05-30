@@ -45,7 +45,7 @@ do
     myAge = Console.ReadLine();
     int.TryParse(myAge, out age); // <- Converts string to integer
 
-} while (int.TryParse(myAge, out age) == false) ;
+} while (int.TryParse(myAge, out age) == false);
 
 
 if (age >= 18)
