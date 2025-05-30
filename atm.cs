@@ -114,6 +114,7 @@ if (repeat.ToLower() == "no")
  * 4 digit Pin
  * 3 attempts
  * If fail exit app
+ * If success show main menu
  * MAIN MENU
  * Check balance
  * Deposit
