@@ -10,7 +10,7 @@ int currentLargest = int.MinValue; // variable to hold the largest grade value s
 
 for (int i = 0; i < grades.Length; i++) // loop to collect each grade from the students; length of grades array
 {
-    Console.Write($"Enter grade for student {i + 1}: "); // prompt the user to enter grade for student in each index +1 to display student number from 1 not 0
+    Console.Write($"Enter grade for student {i + 1} (0-100): "); // prompt the user to enter grade for student in each index +1 to display student number from 1 not 0
     grades[i] = int.Parse(Console.ReadLine()); // read the value and store it in grades array and appropriate index
 
     if (grades[i] < currentSmallest) currentSmallest = grades[i]; // if that grade is smaller then the currentsmallest assigned then this grade is assigned as the currentsmallest.
