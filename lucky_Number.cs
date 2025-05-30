@@ -1,5 +1,3 @@
-using static System.Net.Mime.MediaTypeNames;
-
 DateTime today = DateTime.Now;
 
 Console.ForegroundColor = ConsoleColor.White;
@@ -10,8 +8,9 @@ Dashes();
 Console.ForegroundColor = ConsoleColor.Yellow;
 Console.Write("WELCOME TO THE LUCKY NUMBER GAME");
 Console.ResetColor();
+Console.ReadLine();
 
-string myFirstName = Console.ReadLine();
+string myFirstName = "";
 while (myFirstName == "")
 {
     Dashes();
@@ -21,14 +20,8 @@ while (myFirstName == "")
     Console.Write("Type in your first name: ");
     myFirstName = Console.ReadLine();
 }
-
-Dashes();
-Console.ForegroundColor = ConsoleColor.Green;
-Console.WriteLine("Please enter your last name");
-Console.ResetColor();
-Console.Write("Type in your last name: ");
-string myLastName = Console.ReadLine();
-while (myLastName == "")
+string myLastName = "";
+do
 {
     Dashes();
     Console.ForegroundColor = ConsoleColor.Green;
@@ -36,7 +29,8 @@ while (myLastName == "")
     Console.ResetColor();
     Console.Write("Type in your last name: ");
     myLastName = Console.ReadLine();
-}
+} while (myLastName == "");
+
 string myAge;
 int age;
 
@@ -71,14 +65,8 @@ else
     return;
 }
 
-Dashes();
-Console.ForegroundColor = ConsoleColor.White;
-Console.WriteLine($"Very nice to have you here, {myFirstName}, did you say your last name was, {myLastName}, yes or no?");
-Console.ResetColor();
-TypeAnswer();
-
-string lastNameValue = Console.ReadLine();
-while (lastNameValue.ToLower() != "yes" && lastNameValue.ToLower() != "no")
+string lastNameValue = "";
+do
 {
     Dashes();
     Console.ForegroundColor = ConsoleColor.White;
@@ -86,7 +74,7 @@ while (lastNameValue.ToLower() != "yes" && lastNameValue.ToLower() != "no")
     Console.ResetColor();
     TypeAnswer();
     lastNameValue = Console.ReadLine();
-}
+} while (lastNameValue.ToLower() != "yes" && lastNameValue.ToLower() != "no");
 
 if (lastNameValue.ToLower() == "yes")
 {
@@ -100,13 +88,7 @@ if (lastNameValue.ToLower() == "yes")
 
 else
 {
-    Dashes();
-    Console.ForegroundColor = ConsoleColor.White;
-    Console.WriteLine("So what was your last name?");
-    Console.ResetColor();
-    TypeAnswer();
-
-    string truelastNameValue = Console.ReadLine();
+    string truelastNameValue = "";
     while (truelastNameValue == "")
     {
         Dashes();
@@ -139,29 +121,28 @@ void PlayGame()
         string userValue = Console.ReadLine();
         string message;
 
-        if (userValue == "1")
+        switch (userValue)
         {
-            Dashes();
-            message = "YOU WON THE GAME!";
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write(message);
-            Console.ReadLine();
-            return;
-        }
-        else if (userValue == "2")
-        {
-            Dashes();
-            message = "You didn't win! Press Enter to continue";
-        }
-        else if (userValue == "3")
-        {
-            Dashes();
-            message = "Sorry, better luck next time. Press Enter to continue";
-        }
-        else
-        {
-            Dashes();
-            message = "Sorry, this number doesn't exist. Press Enter to continue";
+            case "1":
+                Dashes();
+                message = "YOU WON THE GAME!";
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(message);
+                Console.ReadLine();
+                return;
+
+            case "2":
+                Dashes();
+                message = "You didn't win! Press Enter to continue";
+                break;
+            case "3":
+                Dashes();
+                message = "Sorry, better luck next time. Press Enter to continue";
+                break;
+            default:
+                Dashes();
+                message = "Sorry, this number doesn't exist. Press Enter to continue";
+                break;
         }
 
         Console.ForegroundColor = ConsoleColor.Red;
@@ -186,8 +167,8 @@ void PlayGame()
         TypeAnswer();
         PlayGame(); // <- inception
                     // return stops the method execution from inception and doesnt continue past this block
-                    // without return; the method would continue executing after the recursion
-        return;
+        return;     // without return; the method would continue executing after the recursion
+        
     }
 
     Dashes();
