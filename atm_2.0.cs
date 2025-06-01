@@ -1,6 +1,8 @@
-const int correctPIN = 0377;
+const string correctPIN = "0377";
 int attempts = 0;
 int currentBalance = 100;
+int withdrawAmount;
+int depositAmount;
 
 string repeat = "yes";
 
@@ -12,9 +14,8 @@ while (attempts < 3)
 {
     Console.Write("Enter PIN number: ");
     string userInput = Console.ReadLine();
-    int.TryParse(userInput, out int pinGuess);
 
-    if (pinGuess == correctPIN)
+    if (userInput == correctPIN)
     {
         Console.Write("Access granted");
         Console.ReadLine();
@@ -47,7 +48,7 @@ while (repeat.ToLower() == "yes")
     string answer = Console.ReadLine();
     while (answer.ToLower() != "withdraw" && answer.ToLower() != "deposit")
     {
-        Console.Write("I'm sorry, I didn't get that: ");
+        Console.Write("Please choose withdraw or deposit: ");
         answer = Console.ReadLine();
     }
 
@@ -55,18 +56,24 @@ while (repeat.ToLower() == "yes")
     {
         Console.Write("How much would you like to withdraw: ");
         string withdraw = Console.ReadLine();
-        int.TryParse(withdraw, out int withdrawAmount);
+
+        while (!int.TryParse(withdraw, out withdrawAmount) || withdrawAmount <= 0)
+        {
+            Console.Write("Please enter a valid amount: ");
+            withdraw = Console.ReadLine();
+        }
 
         if (withdrawAmount > currentBalance)
         {
             Console.WriteLine("I'm sorry, you have insufficient funds");
         }
-
         else
         {
             currentBalance -= withdrawAmount;
+            Console.WriteLine("------------------------------");
             Console.WriteLine("Withdrawal successful.");
             Console.WriteLine($"Remaining balance: ${currentBalance}");
+            Console.WriteLine("------------------------------");
         }
     }
 
@@ -74,15 +81,27 @@ while (repeat.ToLower() == "yes")
     {
         Console.Write("How much would you like to deposit: ");
         string deposit = Console.ReadLine();
-        int.TryParse(deposit, out int depositAmount); // <- error when input is a character
 
+        while (!int.TryParse(deposit, out depositAmount) || depositAmount <= 0)
+        {
+            Console.Write("Please enter a valid number: ");
+            deposit = Console.ReadLine();
+        }          
         currentBalance += depositAmount;
+        Console.WriteLine("------------------------------");
         Console.WriteLine("Deposit successful.");
         Console.WriteLine($"Current balance: ${currentBalance}");
+        Console.WriteLine("------------------------------");
     }
 
     Console.Write("Would you like another operation, yes or no: ");
     repeat = Console.ReadLine();
+
+    while (repeat.ToLower() != "yes" && repeat.ToLower() != "no")
+    {
+        Console.Write("Please enter yes or no: ");
+        repeat = Console.ReadLine();
+    }
 }
 
 if (repeat.ToLower() == "no")
