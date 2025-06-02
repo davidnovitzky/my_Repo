@@ -1,9 +1,9 @@
-double distance = 0.0; // <- double float variable for decimals
+double distance = 0.0;
 double consumption = 0.0;
 double fuelPrice = 0.0;
    
 Console.Write($"Distance (km): ");
-distance = float.Parse(Console.ReadLine()); // <- string to float conversion
+distance = float.Parse(Console.ReadLine());
             
 Console.Write("Fuel Consumption (L/100km): ");
 consumption = float.Parse(Console.ReadLine());
