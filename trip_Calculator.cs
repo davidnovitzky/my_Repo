@@ -1,15 +1,11 @@
-double distance = 0.0;
-double consumption = 0.0;
-double fuelPrice = 0.0;
-   
 Console.Write($"Distance (km): ");
-distance = float.Parse(Console.ReadLine());
-            
+double distance = float.Parse(Console.ReadLine()); // <- string to float conversion
+
 Console.Write("Fuel Consumption (L/100km): ");
-consumption = float.Parse(Console.ReadLine());
+double consumption = float.Parse(Console.ReadLine());
 
 Console.Write("Fuel Price ($): ");
-fuelPrice = float.Parse(Console.ReadLine());
+double fuelPrice = float.Parse(Console.ReadLine());
 
 Console.WriteLine("--- Totals ---");
 
