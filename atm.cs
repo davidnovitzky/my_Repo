@@ -115,7 +115,7 @@ if (repeat.ToLower() == "no")
  * 3 attempts
  * If fail exit app
  * If success show main menu
- * MAIN MENU
+ * MAIN MENU (switch expressions)
  * Check balance
  * Deposit
  * Withdraw
