@@ -31,7 +31,7 @@ do
     myLastName = Console.ReadLine();
 } while (myLastName == "");
 
-string myAge;
+string myAge; // why can I declare variables sometimes without assigning a value
 int age;
 
 do
