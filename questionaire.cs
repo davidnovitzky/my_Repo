@@ -13,20 +13,35 @@ questionQty += 1;
 Console.Write("Your answer: ");
 string answerOne = Console.ReadLine();
 
-if (answerOne.ToLower() == "mercury")
+switch (answerOne.ToLower())
 {
-    Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Correct!");
-    Console.ResetColor();
-    score += 1;
+    case "mercury":
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Correct!");
+        Console.ResetColor();
+        score += 1;
+        break;
+    default:
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Incorrect!");
+        Console.ResetColor();
+        break;
 }
 
-else
-{
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Incorrect!");
-    Console.ResetColor();
-}
+//if (answerOne.ToLower() == "mercury")
+//{
+//    Console.ForegroundColor = ConsoleColor.Green;
+//    Console.WriteLine("Correct!");
+//    Console.ResetColor();
+//    score += 1;
+//}
+
+//else
+//{
+//    Console.ForegroundColor = ConsoleColor.Red;
+//    Console.WriteLine("Incorrect!");
+//    Console.ResetColor();
+//}
 
 Console.WriteLine();
 Console.WriteLine(questionTwo);
