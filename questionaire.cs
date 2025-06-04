@@ -88,3 +88,18 @@ else
 Console.WriteLine();
 Console.WriteLine($"You got {score} out of {questionQty} correct!");
 Console.ReadLine();
+
+// Recursion
+//MyMethod();
+
+//void MyMethod()
+//{
+//    NameMethod("Deividas", 34, "Lithuania");
+//    MyMethod();
+//    return;
+//}
+
+//void NameMethod(string name, int age, string country)
+//{
+//    Console.WriteLine($"Hi, my name is {name}, and I'm {age} years old. I'm from {country}");
+//}
