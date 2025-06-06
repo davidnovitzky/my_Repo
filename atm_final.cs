@@ -17,16 +17,23 @@ while (keepRunning == true)
             keepRunning = DisplayCurrentBalance();
             break;
         case 2:            
-            keepRunning = DepositAmount();
+            keepRunning = DisplayPromptDepositAmount();
             break;
         case 3:
-            keepRunning = WithdrawAmount();
+            keepRunning = DisplayPromptWithdrawAmount();
             break;
         case 4:
-            keepRunning = ChangePINMenu();
+            keepRunning = DisplayChangePINMenu();
             break;
         case 5:
             keepRunning = false;
+            break;
+        default:
+            Console.WriteLine("------------------------");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Invalid choice..");
+            Console.ResetColor();
+            Console.WriteLine("------------------------");
             break;
     }
 }
@@ -35,33 +42,53 @@ Console.WriteLine("Withdrawing your card...");
 Console.WriteLine("Bye bye");
 Console.ReadLine();
 
-bool ChangePINMenu()
+bool DisplayChangePINMenu()
 {
     Console.WriteLine("------------------------");
     Console.WriteLine($"Your current 4 digit PIN code is: {correctPIN}");
-    Console.Write("Enter your new PIN: ");
-    string newPinInput = Console.ReadLine();
-    Console.Write("Confirm your new PIN: ");
-    string confirmNewPin = Console.ReadLine();
+    string newPinInput;
+    do
+    {
+        Console.Write("Enter your new PIN: ");
+        newPinInput = Console.ReadLine();
+    } while (string.IsNullOrWhiteSpace(newPinInput) || newPinInput.Length != 4 || !newPinInput.All(char.IsDigit));
+    string confirmNewPin;
+    do
+    {
+        Console.Write("Confirm your new PIN: ");
+        confirmNewPin = Console.ReadLine();
+    } while (string.IsNullOrWhiteSpace(confirmNewPin) || confirmNewPin.Length != 4 || !confirmNewPin.All(char.IsDigit));
 
     while (confirmNewPin != newPinInput)
     {
         Console.WriteLine("------------------------");
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("The PINs do not match. Please try again.");
-        Console.Write("Enter your new PIN: ");
-        newPinInput = Console.ReadLine();
-        Console.Write("Confirm your new PIN: ");
-        confirmNewPin = Console.ReadLine();
+        Console.ResetColor();
+        Console.WriteLine("------------------------");
+        do
+        {
+            Console.Write("Enter your new PIN: ");
+            newPinInput = Console.ReadLine();
+        } while (string.IsNullOrWhiteSpace(newPinInput) || newPinInput.Length != 4 || !newPinInput.All(char.IsDigit));
+
+        do
+        {
+            Console.Write("Confirm your new PIN: ");
+            confirmNewPin = Console.ReadLine();
+        } while (string.IsNullOrWhiteSpace(confirmNewPin) || confirmNewPin.Length != 4 || !confirmNewPin.All(char.IsDigit));
     }
     if (confirmNewPin == newPinInput)
     {
-        Console.WriteLine("------------------------");
-        Console.WriteLine("Your PIN has been changed successfully.");
         correctPIN = confirmNewPin;
+        Console.WriteLine("------------------------");
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Your PIN has been changed successfully.");
+        Console.ResetColor();
     }
     return PromptReturnToMainMenu();
 }
-bool DepositAmount()
+bool DisplayPromptDepositAmount()
 {
     Console.WriteLine("------------------------");
     Console.Write("How much would you like to deposit: ");
@@ -70,6 +97,7 @@ bool DepositAmount()
 
     while (!int.TryParse(deposit, out depositAmount) || depositAmount <= 0)
     {
+        Console.WriteLine("------------------------");
         Console.Write("Please enter a valid number: ");
         deposit = Console.ReadLine();
         int.TryParse(deposit, out depositAmount);
@@ -100,7 +128,7 @@ bool DisplayCurrentBalance()
 
     return PromptReturnToMainMenu();
 }
-bool WithdrawAmount()
+bool DisplayPromptWithdrawAmount()
 {
     Console.WriteLine("------------------------");
     Console.Write("How much would you like to withdraw: ");
@@ -116,7 +144,11 @@ bool WithdrawAmount()
 
     while (withdrawAmount > currentBalance)
     {
+        Console.WriteLine("------------------------");
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("I'm sorry, you have insufficient funds");
+        Console.ResetColor();
+        Console.WriteLine("------------------------");
         Console.WriteLine($"Your current balance: ${currentBalance}");
         Console.Write("Please enter a valid amount: ");
         withdraw = Console.ReadLine();
@@ -176,9 +208,9 @@ bool PromptReturnToMainMenu()
 
     while (answerMainMenu != "yes" && answerMainMenu != "no")
     {
+        Console.WriteLine("------------------------");
         Console.Write("Please enter yes or no: ");
         answerMainMenu = Console.ReadLine().ToLower();
-        Console.WriteLine("------------------------");
     }
 
     if (answerMainMenu.ToLower() == "yes")
