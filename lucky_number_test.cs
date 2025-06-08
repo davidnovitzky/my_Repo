@@ -1,10 +1,41 @@
+bool hasPlayed = false;
+
 Console.WriteLine("Would you like to play the lucky number game?");
 Console.Write("Type in your answer: ");
-PlayGame();
+string gameAnswer = Console.ReadLine();
+
+while (gameAnswer.ToLower() != "no")
+{
+    if (gameAnswer.ToLower() == "yes")
+    {
+        PlayGame();
+        hasPlayed = true;
+        break;
+    }
+    else
+    {
+        Console.WriteLine("-----------------------------");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Please enter yes or no");
+        Console.ResetColor();
+        Console.Write("Type in your answer: ");
+        gameAnswer = Console.ReadLine();
+    }
+}
+
+if (!hasPlayed)
+{
+    Console.WriteLine("-----------------------------");
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("Alright, maybe next time!");
+    Console.ReadLine();
+    return;
+}
+
 
 void PlayGame()
 {
-    string gameAnswer = Console.ReadLine();
+    
     while (gameAnswer.ToLower() == "yes")
     {
         Console.WriteLine("-----------------------------");
@@ -65,9 +96,6 @@ void PlayGame()
             if (gameAnswer == "yes" || gameAnswer == "no") break;
         }
     }
-
-    // What to do here!!!
-    //if (gameAnswer.ToLower() != "no")
 
     Console.WriteLine("-----------------------------");
     Console.ForegroundColor = ConsoleColor.Red;
