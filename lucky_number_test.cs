@@ -10,8 +10,8 @@ Console.Write("WELCOME TO THE LUCKY NUMBER GAME");
 Console.ResetColor();
 Console.ReadLine();
 
-string myFirstName = "";
-while (myFirstName == "")
+string myFirstName;
+while (true)
 {
     Dashes();
     Console.ForegroundColor = ConsoleColor.Green;
@@ -19,9 +19,14 @@ while (myFirstName == "")
     Console.ResetColor();
     Console.Write("Type in your first name: ");
     myFirstName = Console.ReadLine();
+
+    if (!string.IsNullOrEmpty(myFirstName) && myFirstName.All(char.IsLetter))
+    {
+        break;
+    }
 }
-string myLastName = "";
-do
+string myLastName;
+while (true)
 {
     Dashes();
     Console.ForegroundColor = ConsoleColor.Green;
@@ -29,7 +34,12 @@ do
     Console.ResetColor();
     Console.Write("Type in your last name: ");
     myLastName = Console.ReadLine();
-} while (myLastName == "");
+
+    if (!string.IsNullOrEmpty(myLastName) && myLastName.All(char.IsLetter))
+    {
+        break;
+    }
+}
 
 string myAge;
 int age;
@@ -68,7 +78,7 @@ else
     return;
 }
 
-string lastNameValue = "";
+string lastNameValue;
 do
 {
     Dashes();
@@ -92,8 +102,9 @@ if (lastNameValue.ToLower() == "yes")
 
 else
 {
-    string truelastNameValue = "";
-    while (truelastNameValue == "")
+    string truelastNameValue;
+
+    while (true)
     {
         Dashes();
         Console.ForegroundColor = ConsoleColor.White;
@@ -101,6 +112,11 @@ else
         Console.ResetColor();
         TypeAnswer();
         truelastNameValue = Console.ReadLine();
+
+        if (!string.IsNullOrEmpty(truelastNameValue) && truelastNameValue.All(char.IsLetter))
+        {
+            break;
+        }
     }
 
     Dashes();
@@ -126,7 +142,7 @@ void PromptQuestion()
         }
         else
         {
-            Console.WriteLine("-----------------------------");
+            Dashes();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Please enter yes or no");
             Console.ResetColor();
@@ -137,7 +153,7 @@ void PromptQuestion()
 
     if (!hasPlayed)
     {
-        Console.WriteLine("-----------------------------");
+        Dashes();
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Alright, maybe next time!");
         Console.ReadLine();
@@ -146,10 +162,9 @@ void PromptQuestion()
 }
 void PlayGame()
 {
-    string gameAnswer = "yes";
-    while (gameAnswer.ToLower() == "yes")
+    while (true)
     {
-        Console.WriteLine("-----------------------------");
+        Dashes();
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine("Pick a number - 1, 2 or 3");
         Console.ResetColor();
@@ -161,7 +176,7 @@ void PlayGame()
         switch (userValue)
         {
             case "1":
-                Console.WriteLine("-----------------------------");
+                Dashes();
                 message = "YOU WON THE GAME!";
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write(message);
@@ -169,15 +184,15 @@ void PlayGame()
                 return;
 
             case "2":
-                Console.WriteLine("-----------------------------");
+                Dashes();
                 message = "You didn't win! Press Enter to continue";
                 break;
             case "3":
-                Console.WriteLine("-----------------------------");
+                Dashes();
                 message = "Sorry, better luck next time. Press Enter to continue";
                 break;
             default:
-                Console.WriteLine("-----------------------------");
+                Dashes();
                 message = "Sorry, this number doesn't exist. Press Enter to continue";
                 break;
         }
@@ -187,28 +202,30 @@ void PlayGame()
         Console.ResetColor();
         Console.ReadLine();
 
-        Console.WriteLine("-----------------------------"); ;
+        Dashes();
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Would you like to play the game again, yes or no?");
         Console.ResetColor();
         Console.Write("Type in your answer: ");
-        gameAnswer = Console.ReadLine();
-        if (gameAnswer == "yes") continue;
+        string gameAnswer = Console.ReadLine();
+        if (gameAnswer == "yes") continue; // Skips to the next iteration of the loop
+        else if (gameAnswer == "no") break; // Exits this loop entirely
 
         while (gameAnswer.ToLower() != "no")
         {
-            Console.WriteLine("-----------------------------");
+            Dashes();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Please enter yes or no");
             Console.ResetColor();
             Console.Write("Type in your answer: ");
             gameAnswer = Console.ReadLine();
 
-            if (gameAnswer == "yes" || gameAnswer == "no") break;
+            if (gameAnswer == "yes") break; // Exits this loop
         }
+        if (gameAnswer == "no") break; // // Exits this loop entirely
     }
 
-    Console.WriteLine("-----------------------------");
+    Dashes();
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("Alright, maybe next time!");
     Console.ReadLine();
