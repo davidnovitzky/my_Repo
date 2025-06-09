@@ -1,7 +1,7 @@
 Console.Write("How many students? "); //asks the user how many students there are
-int studentCount = int.Parse(Console.ReadLine()); // read and store the input as an integer
+int.TryParse(Console.ReadLine(), out int studentNumber); // read and store the input as an integer
 
-int[] grades = new int[studentCount]; // initializes an array of the students count from the integer variable above
+int[] grades = new int[studentNumber]; // initializes an array of the students count from the integer variable above
 float total = 0; // variable to keep track of total sum of grades for average calculation
 string feedback; // variable to store feedback for each student and display it later
 
@@ -36,7 +36,7 @@ for (int i = 0; i < grades.Length; i++) // loop to show each students grade and 
 }
 Console.WriteLine(); // blank line for separation
 
-float average = total / studentCount; // average calculated from the total gathered grades and divided by the student count of the array
+float average = total / studentNumber; // average calculated from the total gathered grades and divided by the student count of the array
 
 if (average == Math.Floor(average)) Console.WriteLine($"Average grade: {average:F0}"); // // Display average with formatting: no decimals if it's a whole number, 1 decimal if not
 else Console.WriteLine($"Average grade: {average:F1}");
