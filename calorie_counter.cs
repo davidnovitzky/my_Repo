@@ -22,32 +22,31 @@ Console.WriteLine($"Normal calorie intake for your weight ({weight} kg): {normal
 
 decimal dangerouslyLow = normalCalorieIntake * 0.70m;
 decimal underEating = normalCalorieIntake * 0.89m;
-decimal healthyLow = normalCalorieIntake * 0.90m;
 decimal healthyHigh = normalCalorieIntake * 1.10m;
 decimal slightlyOver = normalCalorieIntake * 1.25m;
 decimal significantlyOver = normalCalorieIntake * 1.50m;
 
-if (averageCalorieIntake < dangerouslyLow)
+if (averageCalorieIntake <= dangerouslyLow)
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("You're not eating enough");
 }
-else if (averageCalorieIntake >= dangerouslyLow && averageCalorieIntake <= underEating)
+else if (averageCalorieIntake <= underEating)
 {
     Console.ForegroundColor = ConsoleColor.DarkYellow;
     Console.WriteLine("You are at a low level of caloric intake. You might be losing weight.");
 }
-else if (averageCalorieIntake >= healthyLow && averageCalorieIntake <= healthyHigh)
+else if (averageCalorieIntake <= healthyHigh)
 {
     Console.ForegroundColor = ConsoleColor.Green;
     Console.WriteLine("You are at a healthy level.");
 }
-else if (averageCalorieIntake > healthyHigh && averageCalorieIntake <= slightlyOver)
+else if (averageCalorieIntake <= slightlyOver)
 {
     Console.ForegroundColor = ConsoleColor.DarkYellow;
     Console.WriteLine("You're slightly overeating — you might gain weight over time.");
 }
-else if (averageCalorieIntake > slightlyOver && averageCalorieIntake <= significantlyOver)
+else if (averageCalorieIntake <= significantlyOver)
 {
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("You are eating more than needed — possible weight gain.");
