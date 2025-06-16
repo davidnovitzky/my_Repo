@@ -5,49 +5,43 @@ Console.WriteLine("=== Traffic Light Simulator ===");
 while (true)
 {
     Console.Write($"\nCurrent State: ");
-    
-    if (lightState == TrafficLightState.Red)
+
+    switch (lightState)
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"{lightState}");
-        Console.ResetColor();
-        Console.WriteLine("Stop and wait!");
-        for (int i = 5; i > 0; i--)
-        {
-            timeSecond = (i == 1) ? "second" : "seconds";
-            Console.WriteLine($"Waiting {i} {timeSecond}...");
-            Thread.Sleep(1000);
-        }
-        lightState = TrafficLightState.Yellow;
+        case TrafficLightState.Red:
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{lightState}");
+            Console.ResetColor();
+            Console.WriteLine("Stop and wait!");
+            Timer(5);
+            lightState = TrafficLightState.Yellow;
+            break;
+        case TrafficLightState.Yellow:
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"{lightState}");
+            Console.ResetColor();
+            Console.WriteLine("Prepare to go.");
+            Timer(3);
+            lightState = TrafficLightState.Green;
+            break;
+        case TrafficLightState.Green:
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{lightState}");
+            Console.ResetColor();
+            Console.WriteLine("Go go go!");
+            Timer(5);
+            Console.WriteLine("Stop!");
+            lightState = TrafficLightState.Red;
+            break;
     }
-    else if (lightState == TrafficLightState.Yellow)
+}
+void Timer(int seconds)
+{
+    for (int i = seconds; seconds > 0; seconds--)
     {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine($"{lightState}");
-        Console.ResetColor();
-        Console.WriteLine("Prepare to go.");
-        for (int i = 3; i > 0; i--)
-        {
-            timeSecond = (i == 1) ? "second" : "seconds";
-            Console.WriteLine($"Waiting {i} {timeSecond}...");
-            Thread.Sleep(1000);
-        }
-        lightState = TrafficLightState.Green;
-    }
-    else if (lightState == TrafficLightState.Green)
-    {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine($"{lightState}");
-        Console.ResetColor();
-        Console.WriteLine("Go go go!");
-        for (int i = 5; i > 0; i--)
-        {
-            timeSecond = (i == 1) ? "second" : "seconds";
-            Console.WriteLine($"Waiting {i} {timeSecond}...");
-            Thread.Sleep(1000);
-        }
-        Console.WriteLine("Stop!");
-        lightState = TrafficLightState.Red;
+        timeSecond = (seconds == 1) ? "second" : "seconds";
+        Console.WriteLine($"Waiting {seconds} {timeSecond}...");
+        Thread.Sleep(1000);
     }
 }
 enum TrafficLightState {  Red, Yellow, Green }
