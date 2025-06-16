@@ -13,7 +13,7 @@ while (true)
             Console.WriteLine($"{lightState}");
             Console.ResetColor();
             Console.WriteLine("Stop and wait!");
-            Timer(5);
+            CountdownTimer(5);
             lightState = TrafficLightState.Yellow;
             break;
         case TrafficLightState.Yellow:
@@ -21,7 +21,7 @@ while (true)
             Console.WriteLine($"{lightState}");
             Console.ResetColor();
             Console.WriteLine("Prepare to go.");
-            Timer(3);
+            CountdownTimer(3);
             lightState = TrafficLightState.Green;
             break;
         case TrafficLightState.Green:
@@ -29,13 +29,13 @@ while (true)
             Console.WriteLine($"{lightState}");
             Console.ResetColor();
             Console.WriteLine("Go go go!");
-            Timer(5);
+            CountdownTimer(5);
             Console.WriteLine("Stop!");
             lightState = TrafficLightState.Red;
             break;
     }
 }
-void Timer(int seconds)
+void CountdownTimer(int seconds)
 {
     for (int i = seconds; seconds > 0; seconds--)
     {
