@@ -9,5 +9,4 @@ void PrintDialog(string text, int delayMilliseconds)
         Console.Write(c);
         Thread.Sleep(delayMilliseconds);
     }
-    Console.WriteLine(); // Move to next line after dialog
-}
+    Console.WriteLine();
