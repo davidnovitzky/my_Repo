@@ -1,13 +1,17 @@
-Create a simple program that stores students' names along with their grades in various subjects using tuples. Then display a report for each student.
+// Create a simple program that stores students' names along with their grades in various subjects using tuples.
 
-Store each student's data as a tuple
-string name, string subject, string grade
-Store multiple students in an array
+Console.WriteLine("Welcome to the Student Grades Tracker!");
+Console.WriteLine("--------------------------------------\n");
 
-1. Allow the user to view all students first
-Pick one student out of total
-Show selected student grades of all subjects
-2. View a students grade
-Enter students name
-3. Add a student with grades for each subject
-4.Print a report that lists all subjects and the grade for each student.
+Console.WriteLine("Available actions:");
+Console.WriteLine($"1. View all students\n2. View grades for a student\n3. Add a new student\n4. Exit\n");
+
+string[] students = new string[] { "David", "Aida", "Ariana" };
+
+(string name, Grade grade, Subject subject) studentGrade = (students[0], Grade.B, Subject.Math );
+
+Console.WriteLine($"Grades for {studentGrade.name}:");
+Console.WriteLine($"-{studentGrade.subject}: {studentGrade.grade}");
+
+enum Subject { Math, Science, Art, History }
+enum Grade { A, B, C, D, E, F }
