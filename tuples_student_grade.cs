@@ -6,18 +6,9 @@ string chosenSubject = Console.ReadLine();
 
 Subject subject;
 
-if (chosenSubject.ToLower() == "math")
-{
-    subject = Subject.Math;
-}
-else if (chosenSubject.ToLower() == "history")
-{
-    subject = Subject.History;
-}
-else
-{
-    subject = Subject.Math;
-}
+if      (chosenSubject.ToLower() == "math")    subject = Subject.Math;
+else if (chosenSubject.ToLower() == "history") subject = Subject.History;
+else                                           subject = Subject.Math;
 
 Console.Write("Enter a grade (A-F): ");
 string gradeInput = Console.ReadLine();
