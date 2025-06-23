@@ -18,7 +18,6 @@ while (subjects < 2)
     Console.Write("Enter a grade (A-F): ");
     string gradeInput = Console.ReadLine();
 
-    
     if      (gradeInput == "A") grade = Grade.A;
     else if (gradeInput == "B") grade = Grade.B;
     else if (gradeInput == "C") grade = Grade.C;
