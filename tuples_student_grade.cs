@@ -1,3 +1,5 @@
+// Classes will work better here
+
 Console.Write("Enter your name: ");
 string studentName = Console.ReadLine();
 
