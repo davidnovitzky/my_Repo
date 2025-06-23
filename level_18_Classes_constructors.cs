@@ -11,7 +11,7 @@ class Pet // class - blueprint to create objects
     public Pet(PetType type, string name, int age, int weight) // defining the constructor
     {
         Type = type;
-        Name = name; // Assigns the input value to the object’s field when calling the constructor
+        Name = name; // Assigns the input value in the parenthesis to the object’s field when calling the constructor
         Age = age;
         Weight = weight;
     }
