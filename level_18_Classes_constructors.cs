@@ -16,3 +16,16 @@ class Pet
     }
 }
 enum PetType { Cat, Dog }
+
+Pet newCat = new Pet();
+
+newCat.name = "Bagira";
+newCat.age = 8;
+newCat.weight = 8;
+
+class Pet
+{
+    public string name;
+    public int age;
+    public int weight;
+}
