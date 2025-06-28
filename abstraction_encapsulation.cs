@@ -4,6 +4,8 @@ Car newCar = new Car(2023, Color.White, "Toyota");
 
 Console.WriteLine($"You just got a {newCar.GetYear()} {newCar.GetColor()} {newCar.GetMake()}.");
 newCar.SetSpeed(234.5f); // Max is 500 (encapsulation)
+newCar.Make = "Lamborghini"; // not allowed field is private
+
 class Car // Abstraction - internal logic is hidden from the main program
 {
     private float Speed;
