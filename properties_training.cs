@@ -24,3 +24,21 @@ public class Car
 
     enum Color { White, Black }
 }
+//Car newCar = new Car() { Make = "Toyota", Year = 2023, TopSpeed = 240f };
+
+//public class Car
+//{
+//    public string Make { get; set; }
+//    public int Year { get; set; }
+//    public float TopSpeed { get; set; }
+//}
+
+//Car newCar = new Car() { Make = "BMW" }; // with no init; object initializer wont work
+//Console.WriteLine(newCar.Make);
+//public class Car
+//{
+//    private int _year;
+//    public string Make { get; init; } = "Toyota"; // wit no init; this woud be read only after
+//    public int Year => _year = 2023;
+//    public float TopSpeed { get; set; }
+//}
