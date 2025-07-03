@@ -20,3 +20,18 @@ public class Person
         //}
     }
 }
+
+Person newPerson = new Person();
+
+newPerson.PrintNameLength(); 
+
+public class Person
+{
+    public string? Name;
+    public void PrintNameLength()
+    {
+        Console.WriteLine(Name.Length); // returns an Int
+        Console.WriteLine(Name?.Length); // can return either null or an Int
+        Console.WriteLine(Name?.Length ?? 0); // can return null or Int if its null print 0
+    }
+}
