@@ -35,7 +35,7 @@ class Vehicle
     public string? Make { get; set; }
     public string? Model { get; set; }
     public int Year { get; set; }
-    public float FuelCapacity { get; private set; }
+    public float FuelCapacity { get; protected set; }
     public float CurrentFuel { get; } = 10;
 
     public virtual bool Start()
@@ -65,9 +65,9 @@ class Car : Vehicle
 {
     public int NumberOfDoors { get; set; }
 
-    public float FuelCapacity
+    public Car()
     {
-        get => 50; // Fixed capacity for simplicity
+        FuelCapacity = 50; // Example fuel capacity for a car
     }
 
     public override bool Start()
@@ -91,7 +91,10 @@ class Car : Vehicle
 class Motorcycle : Vehicle
 {
     public bool HasSidecar { get; set; }
-    public float FuelCapacity { get => 15; } // Fixed capacity for simplicity
+    public Motorcycle()
+    {
+        FuelCapacity = 15; // Fixed capacity for simplicity
+    }
 
     public override bool Start()
     {
