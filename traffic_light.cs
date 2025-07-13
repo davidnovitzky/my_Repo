@@ -19,11 +19,11 @@ Console.WriteLine($"{people[0].FirstName} is the first person in the list");
 class Person
 {
     public int Age => GetAge(); // Property to get the age using the GetAge method
-    public string FirstName;
-    public string LastName;
-    public DateTime DateOfBirth;
-    public Gender Gender;
-    public string Nationality;
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    public Gender Gender { get; set; }
+    public string Nationality { get; set; } 
 
     public int GetAge()
     {
