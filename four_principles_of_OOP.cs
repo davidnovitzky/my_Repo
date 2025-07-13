@@ -23,7 +23,7 @@ Console.WriteLine();
 
 Console.WriteLine($"After reset the {corolla.Model} current distance is {corolla.CurrentDistanceDriven}. And a total of {corolla.TotalDistanceDriven}");
 
-public class Vehicle
+public abstract class Vehicle
 {
     public string Make { get; }
     public string Model { get; }
@@ -36,8 +36,10 @@ public class Vehicle
         Model = model;
     }
 
-    public virtual void Drive(int distance)
-    {    
+    public abstract void Drive(int distance);
+
+    protected void UpdateDistance(int distance)
+    {
         CurrentDistanceDriven += distance;
         TotalDistanceDriven += distance;
     }
@@ -55,7 +57,7 @@ public class Car : Vehicle
     public override void Drive(int distance)
     {
         Console.WriteLine($"The {Model} is driving for {distance} km");
-        base.Drive(distance);
+        UpdateDistance(distance);
     }
 }
     
@@ -68,6 +70,6 @@ public class Motorcycle : Vehicle
     public override void Drive(int distance)
     {
         Console.WriteLine($"The {Model} is riding for {distance} km");
-        base.Drive(distance);
+        UpdateDistance(distance);
     }
 }
