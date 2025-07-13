@@ -1,55 +1,39 @@
-// if statements
-
-string lightColor = "";
-string incomingCars = "";
-
-while (lightColor != "green" || incomingCars != "no")
+Person newPerson = new Person()
 {
-    Console.Write("What is the traffic light color? ");
-    lightColor = Console.ReadLine().ToLower().Trim();
-    Console.Write("Are there any cars coming? ");
-    incomingCars = Console.ReadLine().ToLower().Trim();
+    Gender = Gender.Male,
+    FirstName = "David",
+    LastName = "Novitzky",
+    DateOfBirth = new DateTime(1990, 10, 1),
+    Nationality = "Lithuanian",
+};
+Console.WriteLine($"{newPerson.FirstName} is {newPerson.Age} years old.");
 
-    if (lightColor == "green" && incomingCars == "no")
-    {
-        Console.WriteLine("You can cross the street");
-    }
-    else if (lightColor == "green" && incomingCars == "yes")
-    {
-        Console.WriteLine("Wait for the cars to pass!");
-    }
-    else if (lightColor == "red" && incomingCars == "no")
-    {
-        Console.WriteLine("Wait for the light to turn green!");
-    }
-    else
-    {
-        Console.WriteLine("Do not cross!");
-    }
-    Console.WriteLine();
-}
-Console.ReadLine();
+if (newPerson.Age >= 18)
+    Console.WriteLine($"{newPerson.FirstName} is an adult.");
+else
+    Console.WriteLine($"{newPerson.FirstName} is a minor.");
 
-// switch expression
+Person[] people = { newPerson };
 
-string lightColor = "";
-string incomingCars = "";
-
-while (lightColor != "green" || incomingCars != "no")
+Console.WriteLine($"{people[0].FirstName} is the first person in the list");
+class Person
 {
-    Console.Write("What is the traffic light color? ");
-    lightColor = Console.ReadLine().ToLower().Trim();
-    Console.Write("Are there any cars coming? ");
-    incomingCars = Console.ReadLine().ToLower().Trim();
+    public int Age => GetAge(); // Property to get the age using the GetAge method
+    public string FirstName;
+    public string LastName;
+    public DateTime DateOfBirth;
+    public Gender Gender;
+    public string Nationality;
 
-    string message = (lightColor, incomingCars) switch
+    public int GetAge()
     {
-        ("green", "no") => "You can cross the street",
-        ("green", "yes") => "Wait for the cars to pass!",
-        ("red", "no") => "Wait for te light to turn green!",
-        _ => "Do not cross!"
-    };
-    Console.WriteLine(message);
-    Console.WriteLine();
+        DateTime today = DateTime.Today; // get todays date
+        int age = today.Year - DateOfBirth.Year; // calculates age difference in years
+        if (DateOfBirth > today.AddYears(-age))
+        {
+            age--; // subtract 1 year if birthday not happened yet this year
+        }
+        return age; // returns the final age
+    }
 }
-Console.ReadLine();
+enum Gender { Male, Female }
