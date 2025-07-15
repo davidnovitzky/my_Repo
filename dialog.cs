@@ -1,7 +1,10 @@
-PrintDialog("Can I have this?", 20);
+const int fastDialaogDelay = 30;
+const int slowDialogDelay = 500;
+
+PrintDialog("Can I have this?", fastDialaogDelay);
 Console.ReadLine();
-PrintDialog("No", 1000);
-    
+PrintDialog("No", slowDialogDelay);
+
 void PrintDialog(string text, int delayMilliseconds)
 {
     foreach (char c in text)
@@ -10,3 +13,4 @@ void PrintDialog(string text, int delayMilliseconds)
         Thread.Sleep(delayMilliseconds);
     }
     Console.WriteLine();
+}
