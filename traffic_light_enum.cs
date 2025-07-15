@@ -31,20 +31,23 @@ while (true)
 }
 void ShowLightState()
 {
-    if      (lightState == TrafficLightState.Red)    Console.ForegroundColor = ConsoleColor.Red;
+    if (lightState == TrafficLightState.Red) Console.ForegroundColor = ConsoleColor.Red;
     else if (lightState == TrafficLightState.Yellow) Console.ForegroundColor = ConsoleColor.Yellow;
-    else if (lightState == TrafficLightState.Green)  Console.ForegroundColor = ConsoleColor.Green;
+    else if (lightState == TrafficLightState.Green) Console.ForegroundColor = ConsoleColor.Green;
 
     Console.WriteLine($"{lightState}");
     Console.ResetColor();
 }
 void CountdownTimerInSeconds(int seconds)
 {
+    int cursorTop = Console.CursorTop;
+
     for (int i = seconds; seconds > 0; seconds--)
     {
         timeSecond = (seconds == 1) ? "second" : "seconds";
+        Console.SetCursorPosition(0, cursorTop);
         Console.WriteLine($"Waiting {seconds} {timeSecond}...");
         Thread.Sleep(1000);
     }
 }
-enum TrafficLightState {  Red, Yellow, Green }
+enum TrafficLightState { Red, Yellow, Green }
