@@ -52,7 +52,6 @@ public class Car : Vehicle
 {
     public Car(string make, string model) : base(make, model)
     {
-
     }
     public override void Drive(int distance)
     {
@@ -60,12 +59,11 @@ public class Car : Vehicle
         UpdateDistance(distance);
     }
 }
-    
+
 public class Motorcycle : Vehicle
 {
-   public Motorcycle(string make, string model) : base(make, model)
+    public Motorcycle(string make, string model) : base(make, model)
     {
-
     }
     public override void Drive(int distance)
     {
