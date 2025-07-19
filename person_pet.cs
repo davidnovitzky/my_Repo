@@ -92,7 +92,7 @@ class Dog : Pet
 }
 class Cat : Pet
 {
-    public Cat(string name) : base(name, "Cat")
+    public Cat(string name, int numberOfLegs = 4) : base(name, "Cat")
     {
     }
     public override string MakeSound()
